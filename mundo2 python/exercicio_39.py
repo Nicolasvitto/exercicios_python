@@ -1,4 +1,4 @@
-def obter_idade(mensagem):
+def obter_ano_nascimento(mensagem):
     """Solicita ao usuário um número inteiro e valida a entrada."""
     while True:
         try:
@@ -6,20 +6,20 @@ def obter_idade(mensagem):
         except ValueError:
             print("Entrada inválida. Por favor, digite um número inteiro.")
             
-def verificação_alistamento(alistou, idade):
+def verificação_alistamento(alistou, idade, ano_nascimento):
     """Verifica o status de alistamento com base na resposta do usuário."""
     if alistou == 'sim':
         print("Você está alistado.")
     elif alistou == 'não':
-        caso_não_alistamento(idade)
+        caso_não_alistamento(ano_nascimento, idade)
     else:
         print("Resposta inválida. Por favor, responda com 'sim' ou 'não'.")
 
-def caso_não_alistamento(idade):
+def caso_não_alistamento(ano_nascimento,idade):
     """Exibe mensagens com base na idade do usuário e no status de alistamento."""
     if idade < 18:
         print("Você ainda não pode se alistar.")
-        print(f"Faltam {18 - idade} anos para você se alistar.")
+        print(f"Faltam {2025 - ano_nascimento} anos para você se alistar.")
     elif idade == 18:
         print("Você deve se alistar agora.")
     else:
@@ -29,9 +29,10 @@ def caso_não_alistamento(idade):
 def main():
     """Função principal que executa o programa."""
     nome = input("Digite seu nome: ")
-    idade = obter_idade("Digite sua idade: ")
+    ano_nascimento = obter_ano_nascimento("Digite o Ano que nasceu: ")
+    idade = 2025 - ano_nascimento
     alistou = input("Você se alistou? (sim/não): ").strip().lower()
-    verificação_alistamento(alistou, idade)
-
+    verificação_alistamento(alistou, idade, ano_nascimento)
+    
 if __name__ == "__main__":
     main()
