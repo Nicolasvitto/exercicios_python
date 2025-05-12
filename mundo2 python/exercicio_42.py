@@ -5,13 +5,15 @@
 – ISÓSCELES: dois lados iguais, um diferente
 
 – ESCALENO: todos os lados diferentes'''
-
 def pegar_medida(mensagem):
-     while True:
+     return float(input(mensagem))
+
+def validar_mensagem_usuario(mensagem):
+    while True:
         try:
-            return float(input(mensagem))
-        except ValueError: 
-            print("entre com um valor valido")
+            return pegar_medida(mensagem)
+        except ValueError:
+            print("por favor, entre com um valor válido.")
 
 
 def pegar_tipo_triangulo(lado_direito, lado_esquerdo, lado_baixo):
@@ -28,9 +30,9 @@ def pegar_tipo_triangulo(lado_direito, lado_esquerdo, lado_baixo):
   
 
 def main():
-    lado_direito = pegar_medida('digite a primeira medida: ')
-    lado_esquerdo = pegar_medida('digite o lado esquerdo do trinagulo: ')
-    lado_baixo = pegar_medida('digite o lado de baixo do trinagulo: ')
+    lado_direito = validar_mensagem_usuario ('digite a primeira medida: ')
+    lado_esquerdo = validar_mensagem_usuario ('digite o lado esquerdo do trinagulo: ')
+    lado_baixo = validar_mensagem_usuario ('digite o lado de baixo do trinagulo: ')
     pegar_tipo_triangulo(lado_direito,lado_esquerdo,lado_baixo)
 
 if __name__ == "__main__":
