@@ -1,10 +1,32 @@
-from random import shuffle
-a1 = str(input("aluno 1: "))
-a2 = str(input("aluno 2: "))
-a3 = str(input("aluno 3: "))
-a4 = str(input("aluno 4: "))
+# pega nome dos alunos
+def get_name(mensagem):
+    return str(input(mensagem))
 
-alunos = [a1, a2, a3, a4]
-shuffle(alunos)
-joint = ' '.join(alunos)
-print(joint)
+
+# função que trata o erro de mensagem
+def error_handling(mensagem):
+    while True:
+        try:
+            return get_name(mensagem)
+        except ValueError:
+            print("por favor coloque um nome valido")
+
+def  main():
+    from random import shuffle
+    
+    aluno1 = error_handling('digite o nome do promeiro aluno: ')
+    aluno2 = error_handling('digite o nome do segundo aluno: ')
+    aluno3 = error_handling('digite o nome do terceiro aluno: ')
+    aluno4 = error_handling('digite o nome do quarto aluno: ')
+    
+    alunos = [aluno1, aluno2, aluno3, aluno4]
+    
+    # sorteia os alunos
+    shuffle(alunos)
+    
+    # sapara por espaço e vigula
+    joint = ', '.join(alunos)
+    print(joint)
+    
+if __name__ == "__main__":
+    main()
